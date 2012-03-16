@@ -17,6 +17,10 @@ public class YahtzeeFreddy extends GraphicsProgram implements
 	}
 
 	public void run() {
+
+
+
+
 		IODialog dialog = getDialog();
 		nPlayers = dialog.readInt("Enter number of players");
 		playerNames = new String[nPlayers];
