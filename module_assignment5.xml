@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_assignment5" default="compile.module.assignment5">
+  <dirname property="module.assignment5.basedir" file="${ant.file.module_assignment5}"/>
+  
+  <property name="module.jdk.home.assignment5" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.assignment5" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.assignment5" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.assignment5" value="${compiler.args}"/>
+  
+  <property name="assignment5.output.dir" value="${module.assignment5.basedir}"/>
+  <property name="assignment5.testoutput.dir" value="${module.assignment5.basedir}"/>
+  
+  <path id="assignment5.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="assignment5.module.production.classpath">
+    <path refid="${module.jdk.classpath.assignment5}"/>
+    <pathelement location="${basedir}/acm.jar"/>
+    <pathelement location="${basedir}/yahtzeelib.jar"/>
+  </path>
+  
+  <path id="assignment5.runtime.production.module.classpath">
+    <pathelement location="${assignment5.output.dir}"/>
+    <pathelement location="${basedir}/acm.jar"/>
+    <pathelement location="${basedir}/yahtzeelib.jar"/>
+  </path>
+  
+  <path id="assignment5.module.classpath">
+    <pathelement location="${assignment5.output.dir}"/>
+    <path refid="${module.jdk.classpath.assignment5}"/>
+    <pathelement location="${basedir}/acm.jar"/>
+    <pathelement location="${basedir}/yahtzeelib.jar"/>
+  </path>
+  
+  <path id="assignment5.runtime.module.classpath">
+    <pathelement location="${assignment5.output.dir}"/>
+    <pathelement location="${basedir}/acm.jar"/>
+    <pathelement location="${basedir}/yahtzeelib.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.assignment5">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.assignment5">
+    <patternset refid="excluded.from.module.assignment5"/>
+  </patternset>
+  
+  
+  <target name="compile.module.assignment5" depends="compile.module.assignment5.production,compile.module.assignment5.tests" description="Compile module Assignment5"/>
+  
+  <target name="compile.module.assignment5.production" depends="register.custom.compilers" description="Compile module Assignment5; production classes"/>
+  
+  <target name="compile.module.assignment5.tests" depends="register.custom.compilers,compile.module.assignment5.production" description="compile module Assignment5; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.assignment5" description="cleanup module">
+    <delete dir="${assignment5.output.dir}"/>
+    <delete dir="${assignment5.testoutput.dir}"/>
+  </target>
+</project>
